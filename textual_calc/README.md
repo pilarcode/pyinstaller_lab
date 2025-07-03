@@ -1,5 +1,5 @@
 # App
-Dummy app made with textual
+Calc App made with textual
 
 ## Requirements
 ```console
@@ -10,7 +10,7 @@ $ pip install textual
 
 ## How to Run
 ```console
-$ python app.py
+$ python calculator.py
 ```
 
 
@@ -21,7 +21,7 @@ pip install pyinstaller
 ```
 
 ```console
-pyinstaller app.py 
+pyinstaller calculator.py 
 ```
 # Reference
 https://textual.textualize.io/

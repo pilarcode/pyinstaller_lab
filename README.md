@@ -8,3 +8,4 @@ Go to the project folder and follow the README.md instructions.
 **PyInstaller** bundles a Python application and all its dependencies into a single package. 
 
 - https://pyinstaller.org/en/stable/index.html
+- https://hektorprofe.github.io/python/distribucion/pyinstaller/
