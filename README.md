@@ -1,6 +1,14 @@
 # PyInstaller Lab
 This repository contains several projects that I've used to create an executable file with **PyInstaller**.
 
+## PyQt Calc
+
+![demo](images/pyqt_calc_demo.png)
+
+## Textual Calc
+
+![demo](images/textual_calc_demo.png)
+
 ## How to Run
 Go to the project folder and follow the README.md instructions.
 
