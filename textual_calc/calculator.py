@@ -1,9 +1,3 @@
-"""
-An implementation of a classic calculator, with a layout inspired by macOS calculator.
-
-Works like a real calculator. Click the buttons or press the equivalent keys.
-"""
-
 from decimal import Decimal
 
 from textual import events, on
@@ -16,6 +10,9 @@ from textual.widgets import Button, Digits
 
 class CalculatorApp(App):
     """A working 'desktop' calculator."""
+
+    CSS_PATH = "calculator.tcss"
+
     numbers = var("0")
     show_ac = var(True)
     left = var(Decimal("0"))
@@ -95,39 +92,39 @@ class CalculatorApp(App):
             if button_id is not None:
                 press(self.NAME_MAP.get(key, key))
 
-    
-    def on_number_pressed(self, event: Button.Pressed) -> None:
+    @on(Button.Pressed, ".number")
+    def number_pressed(self, event: Button.Pressed) -> None:
         """Pressed a number."""
         assert event.button.id is not None
         number = event.button.id.partition("-")[-1]
         self.numbers = self.value = self.value.lstrip("0") + number
 
-    
-    def on_plus_minus_pressed(self) -> None:
+    @on(Button.Pressed, "#plus-minus")
+    def plus_minus_pressed(self) -> None:
         """Pressed + / -"""
         self.numbers = self.value = str(Decimal(self.value or "0") * -1)
 
-    
-    def on_percent_pressed(self) -> None:
+    @on(Button.Pressed, "#percent")
+    def percent_pressed(self) -> None:
         """Pressed %"""
         self.numbers = self.value = str(Decimal(self.value or "0") / Decimal(100))
 
-    
-    def on_pressed_point(self) -> None:
+    @on(Button.Pressed, "#point")
+    def pressed_point(self) -> None:
         """Pressed ."""
         if "." not in self.value:
             self.numbers = self.value = (self.value or "0") + "."
 
-
-    def on_pressed_ac(self) -> None:
+    @on(Button.Pressed, "#ac")
+    def pressed_ac(self) -> None:
         """Pressed AC"""
         self.value = ""
         self.left = self.right = Decimal(0)
         self.operator = "plus"
         self.numbers = "0"
 
-
-    def on_pressed_c(self) -> None:
+    @on(Button.Pressed, "#c")
+    def pressed_c(self) -> None:
         """Pressed C"""
         self.value = ""
         self.numbers = "0"
@@ -148,20 +145,21 @@ class CalculatorApp(App):
         except Exception:
             self.numbers = "Error"
 
-    
-    def on_pressed_op(self, event: Button.Pressed) -> None:
+    @on(Button.Pressed, "#plus,#minus,#divide,#multiply")
+    def pressed_op(self, event: Button.Pressed) -> None:
         """Pressed one of the arithmetic operations."""
         self.right = Decimal(self.value or "0")
         self._do_math()
         assert event.button.id is not None
         self.operator = event.button.id
 
-    
-    def on_pressed_equals(self) -> None:
+    @on(Button.Pressed, "#equals")
+    def pressed_equals(self) -> None:
         """Pressed ="""
         if self.value:
             self.right = Decimal(self.value)
         self._do_math()
+
 
 def main() -> None:
     """Run the calculator app."""
