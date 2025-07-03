@@ -17,11 +17,17 @@ $ python calculator.py
 ## How to create an executable
 
 ```console
-pip install pyinstaller
+pip install pyinstaller 
 ```
 
 ```console
 pyinstaller calculator.py 
 ```
+
+```console
+pyinstaller --add-data "calculator.css;." calculator.py 
+```
+
+
 # Reference
 https://textual.textualize.io/
