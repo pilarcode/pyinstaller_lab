@@ -9,3 +9,4 @@ Go to the project folder and follow the README.md instructions.
 
 - https://pyinstaller.org/en/stable/index.html
 - https://hektorprofe.github.io/python/distribucion/pyinstaller/
+- https://github.com/pyinstaller/pyinstaller/wiki/Supported-Packages
