@@ -4,10 +4,6 @@ PyCalc is a sample calculator implemented using Python 3 and with a [PyQt6](http
 
 PyCalc is intended to be a demonstrative example of how to build a Python + PyQt6 GUI application using the Model-View-Controller (MVC) pattern.
 
-## Screenshot
-
-![Screenshot](screenshot.png)
-
 ## Requirements
 
 For PyCalc to work, you need to have [Python](https://www.python.org) >= 3.6.1. Then you need to install the PyQt6 library. You can do this by using `pip` in a Python virtual environment:
@@ -34,8 +30,26 @@ After running this command, you'll get PyCalc running on your machine.
 
 To use PyCalc, just enter a valid math expression using your mouse and then press `Enter` or click the `=` button to get the result:
 
-![Screenshot](pycalc-howto.gif)
 
-## Citations
+## How to create an executable
 
-https://github.com/realpython/materials/blob/master/pyqt-calculator-tutorial/pycalc/README.md
+```console
+pip install pyinstaller
+```
+
+To make it disappear we have to indicate that it is a windowed application
+```console
+pyinstaller --windowed --icon=./icono.ico pycalc.py 
+```
+
+We can use a command to generate a single executable file that contains everything.
+```console
+pyinstaller --windowed --onefile --icon=./icono.ico pycalc.py 
+```
+
+We will have the executable file in the dist folder
+
+## References
+- https://github.com/realpython/materials/blob/master/pyqt-calculator-tutorial/pycalc/README.md
+
+
