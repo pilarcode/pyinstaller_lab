@@ -24,8 +24,13 @@ pip install pyinstaller
 pyinstaller calculator.py 
 ```
 
+
 ```console
 pyinstaller --add-data "calculator.css;." calculator.py 
+```
+
+```console
+pyinstaller --onefile --icon=./calculator.ico --add-data "calculator.css;." calculator.py 
 ```
 
 
